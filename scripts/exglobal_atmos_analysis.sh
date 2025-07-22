@@ -324,6 +324,14 @@ HYBENSINFO=${HYBENSINFO:-${FIXgsi}/global_hybens_info.l${LEVS}.txt}
 OBERROR=${OBERROR:-${FIXgsi}/prepobs_errtable.global}
 BLACKLST=${BLACKLST:-${FIXgsi}/rejectlist_global.txt}
 
+## CCH::
+# GSI namelist (modified version)
+# - VarBC data control:
+varbc_data_control=${varbc_data_control:-"default"}
+cld_cld_varbc_constraint=${cld_cld_varbc_constraint:-"0.05"}
+use_bc_clw_for_cloud_mismatch=${use_bc_clw_for_cloud_mismatch:-".true."}
+
+
 # GSI namelist
 SETUP=${SETUP:-""}
 FULL_HYDRO=${FULL_HYDRO:-""}
@@ -781,6 +789,8 @@ cat > gsiparm.anl << EOF
   write_fv3_incr=${write_fv3_increment},
   nhr_anal=${IAUFHRS},
   ta2tb=${ta2tb},
+  varbc_data_control=${varbc_data_control}, cld_cld_varbc_constraint=${cld_cld_varbc_constraint},
+  use_bc_clw_for_cloud_mismatch=${use_bc_clw_for_cloud_mismatch},
   ${WRITE_INCR_ZERO}
   ${WRITE_ZERO_STRAT}
   ${WRITE_STRAT_EFOLD}
